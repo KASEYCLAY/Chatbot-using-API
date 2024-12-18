@@ -1,15 +1,15 @@
 const chatbotToggler = document.querySelector(".chatbot-toggler");
-const closeBtn = document.querySelector(".close-btn");
+const closeBtn = document.querySelector(".chatbot header span.close-btn"); // Adjust close button selector to match
 const chatInput = document.querySelector(".chat-input textarea");
-const sendChatbtn = document.querySelector(".chat-input span");
+const sendChatbtn = document.querySelector(".chat-input span"); // This is your send button
 const chatbox = document.querySelector(".chatbox");
 
 let userMessage = null; // Variable to store user's message
-const API_KEY = ""; // Paste API key her
+const API_KEY = "sk-YourAPIKey"; // Your API key, ensure it's updated securely
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
-  //Create a chat <li> element with passed message and class name
+  // Create a chat <li> element with passed message and class name
   const chatLi = document.createElement("li");
   chatLi.classList.add("chat", className);
   let chatContent =
@@ -85,18 +85,17 @@ chatInput.addEventListener("input", () => {
 });
 
 chatInput.addEventListener("keydown", (e) => {
-  // If Enter key is pressed without the Shift key and the window
-  // width is greater than 800px, handle the chat
+  // If Enter key is pressed without the Shift key and the window width is greater than 800px, handle the chat
   if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
     e.preventDefault();
     handleChat();
   }
 });
 
-sendChatbtn.addEventListener("click", handleChat);
+sendChatbtn.addEventListener("click", handleChat); // Clicking on the button triggers the chat sending
 closeBtn.addEventListener("click", () =>
   document.body.classList.remove("show-chatbot")
-);
+); // Clicking on close button hides chatbot
 chatbotToggler.addEventListener("click", () =>
   document.body.classList.toggle("show-chatbot")
-);
+); // Clicking on chatbot toggler shows/hides chatbot
